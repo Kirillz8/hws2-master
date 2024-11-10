@@ -1,0 +1,36 @@
+.message {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 460px;
+    width: 100%;
+}
+
+.imageAndText {
+
+}
+
+.imageAndText img {
+    width: 48px;
+    height: 48px;
+}
+
+.text {
+
+}
+
+.text:after {
+
+}
+
+.name {
+
+}
+
+.messageText {
+
+}
+
+.time {
+
+}
