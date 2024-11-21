@@ -44,6 +44,7 @@ export const filterAffairs = (affairs: AffairType[], filter: FilterType): Affair
 
     return affairs.filter(el => el.priority === filter) // need to fix
 }
+
 export const deleteAffair = (affairs: AffairType[], _id: number): AffairType[] => { // need to fix any
 
     return affairs.filter(el => el._id !== _id) // need to fix
@@ -55,8 +56,7 @@ function HW2() {
 
     const filteredAffairs = filterAffairs(affairs, filter)
     const deleteAffairCallback = (_id: number) => { // need to fix any
-        const deletedAffairs = affairs.filter(el => el._id !== _id)
-        setAffairs(deletedAffairs)// need to fix
+        setAffairs(deleteAffair(affairs, _id)) // need to fix
     }
 
     return (
