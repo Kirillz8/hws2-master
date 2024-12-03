@@ -1,5 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 type GreetingPropsType = {
     name: string // need to fix any
@@ -38,27 +40,41 @@ const Greeting: React.FC<GreetingPropsType> = (
 
             <div className={s.inputAndButtonContainer}>
                 <div>
-                    <input
-                        id={'hw3-input'}
-                        value={name}
-                        onChange={setNameCallback}
-                        className={inputClass}
-                        onKeyDown={onEnter}
-                        onBlur={onBlur}
-                    />
+                    {/*<input*/}
+                    {/*    id={'hw3-input'}*/}
+                    {/*    value={name}*/}
+                    {/*    onChange={setNameCallback}*/}
+                    {/*    className={inputClass}*/}
+                    {/*    onKeyDown={onEnter}*/}
+                    {/*    onBlur={onBlur}*/}
+                    {/*/>*/}
+                    <TextField
+                               // label={error ? 'Ошибка! Введите имя!' : 'Ваше имя:'}
+                               variant="filled"
+                               id={'hw3-input'}
+                               value={name}
+                               onChange={setNameCallback}
+                               className={inputClass}
+                               onKeyDown={onEnter}
+                               onBlur={onBlur}/>
                     <div id={'hw3-error'} className={s.error}>
                         {error}
                     </div>
                 </div>
 
-                <button
-                    id={'hw3-button'}
-                    onClick={addUser}
-                    className={s.button}
-                    disabled={!name.trim()}
-                >
-                    add
-                </button>
+                {/*<button*/}
+                {/*    id={'hw3-button'}*/}
+                {/*    onClick={addUser}*/}
+                {/*    className={s.button}*/}
+                {/*    disabled={!name.trim()}*/}
+                {/*>*/}
+                {/*    add*/}
+                {/*</button>*/}
+                <Button variant="contained"
+                        id={'hw3-button'}
+                        onClick={addUser}
+                        className={s.button}
+                        disabled={!name.trim()}>Add</Button>
             </div>
 
             {lastUserName && (
