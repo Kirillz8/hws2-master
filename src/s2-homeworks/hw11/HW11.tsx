@@ -1,4 +1,4 @@
-import React, {type ChangeEvent, useState} from 'react'
+import React, {useState} from 'react'
 import s from './HW11.module.css'
 import s2 from '../../s1-main/App.module.css'
 import {restoreState} from '../hw06/localStorage/localStorage'
@@ -23,8 +23,6 @@ function HW11() {
         } else {
             setValue1(value)
         }
-
-
     }
 
     return (
