@@ -34,14 +34,31 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode('Код 200!')
-                setImage(success200)
                 // дописать
-
+                console.log(res.status === 200)
+                    setCode(`Код ${res.status}!`)
+                    setImage(success200)
+                    setInfo(res.data.info)
+                    setText(res.data.errorText)
             })
             .catch((e) => {
                 // дописать
-
+                if (e.response.status === 500) {
+                    setCode(`Ошибка ${e.response.status}!`)
+                    setImage(error500)
+                    setInfo(e.response.data.info)
+                    setText(e.response.data.errorText)
+                } else if (e.response.status === 400) {
+                    setCode(`Ошибка ${e.response.status}!`)
+                    setImage(error400)
+                    setInfo(e.response.data.info)
+                    setText(e.response.data.errorText)
+                } else {
+                    setImage(errorUnknown)
+                    setInfo(e.name)
+                    setText(e.message)
+                    setCode('Error!')
+                }
             })
     }
 
@@ -56,6 +73,7 @@ const HW13 = () => {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
+                        disabled={info === '...loading'}
 
                     >
                         Send true
@@ -65,6 +83,7 @@ const HW13 = () => {
                         onClick={send(false)}
                         xType={'secondary'}
                         // дописать
+                        disabled={info === '...loading'}
 
                     >
                         Send false
@@ -74,6 +93,7 @@ const HW13 = () => {
                         onClick={send(undefined)}
                         xType={'secondary'}
                         // дописать
+                        disabled={info === '...loading'}
 
                     >
                         Send undefined
@@ -83,7 +103,7 @@ const HW13 = () => {
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
                         // дописать
-
+                        disabled={info === '...loading'}
                     >
                         Send null
                     </SuperButton>
